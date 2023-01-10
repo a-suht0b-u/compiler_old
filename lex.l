@@ -20,7 +20,7 @@ typedef union {
 id   [A-Za-z][A-Za-z0-9]*  
 int    [0-9]+
 float  ([0-9]*\.[0-9]+)|([0-9]+\.)
-char   (\'[^\n]\')
+char	(\'[^\n]\')
 
 %%
 {int}        {yylval.type_int=atoi(yytext); return INT;}
@@ -42,12 +42,14 @@ char   (\'[^\n]\')
 ","			{return COMMA;}
 ">"|"<"|">="|"<="|"=="|"!=" {strcpy(yylval.type_id, yytext);return RELOP;}
 "="			{return ASSIGNOP;}
-"+"			{return PLUS;}
+"+"			{return PLUS;}		
 "-"			{return MINUS;}
+"++"		{return DPLUS;}
+"--"		{return DMINUS;}
 "*"			{return STAR;}
 "/"			{return DIV;}
 "&&"         {return AND;}
-"||"            {return OR;}
+"||"          {return OR;}
 "!"			{return NOT;}
 "("			{return LP;}
 ")"			{return RP;}

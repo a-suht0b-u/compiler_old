@@ -74,12 +74,12 @@ void display(struct ASTNode *T,int indent)
 	case STM_LIST:      display(T->ptr[0],indent);      //显示第一条语句
                         display(T->ptr[1],indent);        //显示剩下语句
                         break;
-	case WHILE:         printf("%*c循环语句：(%d)\n",indent,' ',T->pos);
+	case WHILE:         printf("%*cWHILE循环语句：(%d)\n",indent,' ',T->pos);
                         printf("%*c循环条件：\n",indent+3,' ');
                         display(T->ptr[0],indent+6);      //显示循环条件
                         printf("%*c循环体：(%d)\n",indent+3,' ',T->pos);
                         display(T->ptr[1],indent+6);      //显示循环体
-                        break;
+                        break;						
 	case FOR:         	printf("%*cFOR循环语句：(%d)\n",indent,' ',T->pos);
 						printf("%*c循环变量定义：\n",indent+3,' ');
                         display(T->ptr[0],indent+6);      //显示变量声名赋值
@@ -94,6 +94,7 @@ void display(struct ASTNode *T,int indent)
                         break;
 	case CONTINUE:		printf("%*cCONTINUE跳出继续循环语句(%d)\n",indent,' ',T->pos);
                         break;
+						
 	case IF_THEN:       printf("%*c条件语句(IF_THEN)：(%d)\n",indent,' ',T->pos);
                         printf("%*c条件：\n",indent+3,' ');
                         display(T->ptr[0],indent+6);      //显示条件
@@ -136,7 +137,7 @@ void display(struct ASTNode *T,int indent)
                         break;
 	case CHAR:	        printf("%*cCHAR：%c\n",indent,' ',T->type_char);
                         break;
-	case ASSIGNOP:
+	case ASSIGNOP:		//与下列共用DIV的语句
 	case AND:
 	case OR:
 	case RELOP:
@@ -148,6 +149,10 @@ void display(struct ASTNode *T,int indent)
                     display(T->ptr[0],indent+3);
                     display(T->ptr[1],indent+3);
                     break;
+	case DPLUS_BEFORE:
+	case DPLUS_AFTER:
+	case DMINUS_BEFORE:
+	case DMINUS_AFTER:
 	case NOT:
 	case UMINUS:    printf("%*c%s\n",indent,' ',T->type_id);
                     display(T->ptr[0],indent+3);
