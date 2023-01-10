@@ -121,13 +121,15 @@ void display(struct ASTNode *T,int indent)
                         while (T0) {
                             if (T0->ptr[0]->kind==ID)
                                 printf("%*c %s\n",indent+6,' ',T0->ptr[0]->type_id);
+							else if (T0->ptr[0]->kind==DIMENSION)
+								display(T0->ptr[0],indent+6);	
                             else if (T0->ptr[0]->kind==ASSIGNOP)
-                                {
+							{
                                 printf("%*c %s ASSIGNOP\n ",indent+6,' ',T0->ptr[0]->ptr[0]->type_id);
                                 display(T0->ptr[0]->ptr[1],indent+strlen(T0->ptr[0]->ptr[0]->type_id)+7);        //显示初始化表达式
-                                }
-                            T0=T0->ptr[1];
                             }
+                            T0=T0->ptr[1];
+                        }
                         break;
 	case ID:	        printf("%*cID： %s\n",indent,' ',T->type_id);
                         break;
@@ -136,6 +138,12 @@ void display(struct ASTNode *T,int indent)
 	case FLOAT:	        printf("%*cFLAOT：%f\n",indent,' ',T->type_float);
                         break;
 	case CHAR:	        printf("%*cCHAR：%c\n",indent,' ',T->type_char);
+                        break;
+	case DIMENSION:	   	printf("%*cID： %s\n",indent,' ',T->type_id);
+						display(T->ptr[0],indent);
+					    break;
+	case DIMENSION_LIST:printf("%*c维大小：%d\n",indent,' ',T->type_int);
+						display(T->ptr[1],indent);
                         break;
 	case ASSIGNOP:		//与下列共用DIV的语句
 	case AND:

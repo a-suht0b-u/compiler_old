@@ -55,6 +55,8 @@ char	(\'[^\n]\')
 ")"			{return RP;}
 "{"			{return LC;}
 "}"			{return RC;}
+"["			{return LB;}
+"]"			{return RB;}
 [\n]           {yycolumn=1;}   
 [ \r\t]          {}   
 .			{printf("Error type A :Mysterious character \"%s\"\n\t at Line %d\n",yytext,yylineno);}
