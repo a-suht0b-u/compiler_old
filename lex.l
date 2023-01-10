@@ -7,7 +7,8 @@ int yycolumn=1;
 	yylloc.first_column=yycolumn;	yylloc.last_column=yycolumn+yyleng-1; yycolumn+=yyleng;
 typedef union {
 	int type_int;
-	int type_float;
+	float type_float;
+	char type_char;
 	char type_id[32];
 	struct node *ptr;
 } YYLVAL;
@@ -19,13 +20,16 @@ typedef union {
 id   [A-Za-z][A-Za-z0-9]*  
 int    [0-9]+
 float  ([0-9]*\.[0-9]+)|([0-9]+\.)
+char   (\'[^\n]\')
 
 %%
 {int}        {yylval.type_int=atoi(yytext); return INT;}
 {float}      {yylval.type_float=atof(yytext); return FLOAT;}
+{char}      {yylval.type_char=*(yytext+1); return CHAR;}
 
 "int"        {strcpy(yylval.type_id,  yytext);return TYPE;}
 "float"      {strcpy(yylval.type_id,  yytext);return TYPE;}
+"char"      {strcpy(yylval.type_id,  yytext);return TYPE;}
 "return"     {return RETURN;}
 "if"         {return IF;}
 "else"       {return ELSE;}
@@ -33,7 +37,7 @@ float  ([0-9]*\.[0-9]+)|([0-9]+\.)
 {id}       {strcpy(yylval.type_id,  yytext); return ID;}
 ";"			{return SEMI;}
 ","			{return COMMA;}
-">"|"<"|">="|"<="|"=="|"!=" {strcpy(yylval.type_id, yytext);;return RELOP;}
+">"|"<"|">="|"<="|"=="|"!=" {strcpy(yylval.type_id, yytext);return RELOP;}
 "="			{return ASSIGNOP;}
 "+"			{return PLUS;}
 "-"			{return MINUS;}
