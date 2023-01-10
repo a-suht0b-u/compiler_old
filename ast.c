@@ -145,6 +145,13 @@ void display(struct ASTNode *T,int indent)
 	case DIMENSION_LIST:printf("%*c维大小：%d\n",indent,' ',T->type_int);
 						display(T->ptr[1],indent);
                         break;
+	case ARRAY:			printf("%*c{\n",indent);//数组括号
+						display(T->ptr[0],indent+3);
+						printf("%*c}\n",indent);
+						break;
+	case ARRAY_LIST:	display(T->ptr[0],indent);//数组的值
+						display(T->ptr[1],indent);
+						break;
 	case ASSIGNOP:		//与下列共用DIV的语句
 	case AND:
 	case OR:

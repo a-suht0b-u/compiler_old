@@ -10,7 +10,8 @@ int fibo(int a) {
 	return fibo(a-1)+fibo(a-2);
 }
 int main(){
-	int g[5][6];	
+	int g[5][6];
+	int h[3]={1,2,3};
 	char pp,qq;
 	int m,n,i;
 	int z=0;
@@ -38,7 +39,7 @@ int main(){
 		continue;
 	}
 	
-	
+	d={2,3};
 	
 	return 1;	
 }
