@@ -97,24 +97,27 @@
      DIMENSION_LIST = 313,
      ARRAY = 314,
      ARRAY_LIST = 315,
-     FUNC_CALL = 316,
-     ARGS = 317,
-     FUNCTION = 318,
-     PARAM = 319,
-     ARG = 320,
-     CALL = 321,
-     LABEL = 322,
-     GOTO = 323,
-     JLT = 324,
-     JLE = 325,
-     JGT = 326,
-     JGE = 327,
-     EQ = 328,
-     NEQ = 329,
-     RM = 330,
-     LM = 331,
-     UMINUS = 332,
-     LOWER_THEN_ELSE = 333
+     ARRAY_1 = 316,
+     ARRAY_N = 317,
+     FUNC_CALL = 318,
+     ARGS = 319,
+     FUNCTION = 320,
+     PARAM = 321,
+     ARG = 322,
+     CALL = 323,
+     LABEL = 324,
+     GOTO = 325,
+     JLT = 326,
+     JLE = 327,
+     JGT = 328,
+     JGE = 329,
+     EQ = 330,
+     NEQ = 331,
+     LCOMMA = 332,
+     RM = 333,
+     LM = 334,
+     UMINUS = 335,
+     LOWER_THEN_ELSE = 336
    };
 #endif
 
@@ -136,7 +139,7 @@ typedef union YYSTYPE
 
 
 /* Line 1676 of yacc.c  */
-#line 140 "parser.tab.h"
+#line 143 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
