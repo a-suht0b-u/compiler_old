@@ -57,7 +57,7 @@ void display(struct ASTNode *,int);
 %nonassoc BREAK CONTINUE
 %%
 
-program: ExtDefList    { display($1,0); }     //显示语法树,语义分析  魔改semantic_Analysis($1);
+program: ExtDefList    {printf("程序体：\n"); display($1,0); }     //显示语法树,语义分析  魔改semantic_Analysis($1);
          ; 
 ExtDefList: {$$=NULL;}
           | ExtDef ExtDefList {$$=mknode(2,EXT_DEF_LIST,yylineno,$1,$2);}   //每一个EXTDEFLIST的结点，其第1棵子树对应一个外部变量声明或函数

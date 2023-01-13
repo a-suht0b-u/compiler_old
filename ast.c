@@ -23,8 +23,8 @@ void display(struct ASTNode *T,int indent)
   if (T)
 	{
 	switch (T->kind) {
-	case EXT_DEF_LIST:  display(T->ptr[0],indent);    //显示该外部定义（外部变量和函数）列表中的第一个
-                        display(T->ptr[1],indent);    //显示该外部定义列表中的其它外部定义
+	case EXT_DEF_LIST:  display(T->ptr[0],indent+3);    //显示该外部定义（外部变量和函数）列表中的第一个
+                        display(T->ptr[1],indent+3);    //显示该外部定义列表中的其它外部定义
                         break;
 	case EXT_VAR_DEF:   printf("%*c外部变量定义：(%d)\n",indent,' ',T->pos);
                         display(T->ptr[0],indent+3);        //显示外部变量类型

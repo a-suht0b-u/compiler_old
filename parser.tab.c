@@ -1657,7 +1657,7 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 60 "parser.y"
-    { display((yyvsp[(1) - (1)].ptr),0); ;}
+    {printf("程序体：\n"); display((yyvsp[(1) - (1)].ptr),0); ;}
     break;
 
   case 3:
